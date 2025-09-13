@@ -7,6 +7,9 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+### Added
+- Added Git churn analyzer script (`analyze-churn.sh`) and documentation (`ANALYZE-CHURN-README.md`) for analyzing repository file change frequency using Git history
+
 ## [v1.4.0] - 2025-09-13
 
 ### Added
