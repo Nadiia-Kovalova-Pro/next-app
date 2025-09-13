@@ -8,7 +8,40 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 ## [Unreleased]
 
 ### Added
-- Duplicate todo functionality (work in progress on `feature/duplicate-todos` branch)
+- Custom `useTodos` hook for centralized todo state management and business logic
+- `TodoForm` component for better separation of concerns and form handling
+- `TodoItemProps` interface for improved type safety in TodoItem component
+- CSS Modules implementation replacing Tailwind CSS for styling
+- Comprehensive CSS styles in `TodoApp.module.css` with hover states, transitions, and accessibility features
+- Form validation with proper error handling and user feedback
+- Accessibility improvements including ARIA labels, semantic HTML, and keyboard navigation
+- Smooth transitions for todo completion state changes
+- Type definitions in dedicated `types/todo.ts` file for better organization
+
+### Changed
+- Refactored main `Home` component to use custom hook and extracted components
+- Improved variable naming and code readability throughout the application
+- Enhanced form handling with proper HTML form elements and submit events
+- Updated styling system from Tailwind CSS utility classes to CSS Modules
+- Modified `addTodo` function to return success status for better UX feedback
+- Improved error messaging with specific validation messages
+
+### Removed
+- Tailwind CSS dependency and configuration
+- Inline Tailwind utility classes from components
+- Direct state management from main component (moved to custom hook)
+
+### Fixed
+- Input clearing behavior to only clear on successful todo addition
+- Form submission handling with proper event prevention
+- Type safety issues with better TypeScript interfaces
+
+### Technical Improvements
+- Component extraction for better maintainability and reusability
+- Custom hook implementation for logic separation
+- CSS Modules for scoped and conflict-free styling
+- Enhanced accessibility with proper ARIA attributes and semantic markup
+- Improved error handling and user feedback systems
 
 ## [v1.1.0] - 2025-09-13
 
