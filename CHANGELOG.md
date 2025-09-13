@@ -7,6 +7,30 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+## [v1.3.0] - 2025-09-13
+
+### Added
+- New `/about` page with comprehensive information about the Todo application
+- Dedicated `About.module.css` for About page styling with improved typography and layout
+- Navigation component (`Navigation.tsx`) extracted from layout for better reusability
+- Centralized routes configuration in `src/lib/routes.ts` with TypeScript interfaces
+- Dynamic navigation rendering using routes array for maintainable link management
+- Page-specific metadata for the About page to improve SEO
+- `Navigation.module.css` for consistent navigation styling with hover effects and transitions
+
+### Changed
+- Moved navigation from `layout.tsx` to dedicated `Navigation` component
+- Updated navigation to use dynamic routes configuration instead of hardcoded links
+- Enhanced About page content with detailed features list and usage instructions
+- Improved navigation accessibility with proper semantic HTML structure
+- Replaced inline navigation styles with CSS Modules approach
+
+### Technical Improvements
+- Centralized route management for easier maintenance and scalability
+- Component extraction following single responsibility principle
+- Enhanced type safety with Route interface definitions
+- Improved code organization with separation of navigation logic
+
 ## [v1.2.0] - 2025-09-13
 
 ### Added
