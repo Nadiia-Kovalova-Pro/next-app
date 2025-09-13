@@ -1,6 +1,7 @@
 import React from 'react';
 import { Todo } from '../types/todo';
 import styles from '../styles/TodoApp.module.css';
+import Button from './Button';
 
 interface TodoItemProps {
   todo: Todo;
@@ -24,14 +25,13 @@ function TodoItem({ todo, onToggle, onDelete }: TodoItemProps) {
           {todo.text}
         </span>
       </label>
-      <button
-        type="button"
+      <Button
+        variant="danger"
         onClick={() => onDelete(todo.id)}
-        className={styles.deleteButton}
         aria-label={`Delete "${todo.text}"`}
       >
         Delete
-      </button>
+      </Button>
     </li>
   );
 }

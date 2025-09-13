@@ -1,5 +1,6 @@
 import { useState, FormEvent } from 'react';
 import styles from '../styles/TodoApp.module.css';
+import Button from './Button';
 
 interface TodoFormProps {
   onAdd: (text: string) => boolean;
@@ -29,12 +30,9 @@ export default function TodoForm({ onAdd, errorMessage }: TodoFormProps) {
           className={styles.input}
           aria-label="New todo input"
         />
-        <button
-          type="submit"
-          className={styles.button}
-        >
+        <Button type="submit">
           Add
-        </button>
+        </Button>
       </div>
       {/* Error message display */}
       {errorMessage && <p className={styles.error} role="alert">{errorMessage}</p>}
