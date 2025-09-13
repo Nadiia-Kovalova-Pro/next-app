@@ -26,11 +26,11 @@ export default function TodoForm({ onAdd, errorMessage }: TodoFormProps) {
           type="text"
           value={newTodoText}
           onChange={(e) => setNewTodoText(e.target.value)}
-          placeholder="Add a new todo"
+          placeholder="Add a new task..."
           className={styles.input}
           aria-label="New todo input"
         />
-        <Button type="submit">
+        <Button type="submit" variant="success">
           Add
         </Button>
       </div>

@@ -37,12 +37,21 @@
 }
 
 .danger {
-  background-color: #dc2626;
+  background-color: #dc3545;
   color: white;
 }
 
 .danger:hover {
-  background-color: #b91c1c;
+  background-color: #c82333;
+}
+
+.success {
+  background-color: #28a745;
+  color: white;
+}
+
+.success:hover {
+  background-color: #218838;
 }
 
 .disabled {

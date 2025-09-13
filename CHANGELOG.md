@@ -7,6 +7,28 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+## [v1.4.0] - 2025-09-13
+
+### Added
+- Checkmark icon (✅) to the Todo App header for visual appeal
+- Larger checkbox icons for improved accessibility and visibility
+- Enhanced card-style layout for todo items with increased border-radius and subtle shadows
+- Trashcan icon (🗑️) replacing text-based delete buttons for better aesthetics
+
+### Changed
+- Updated input placeholder text to "Add a new task..." for better clarity
+- Changed "Add" button color to vibrant green (#28a745) to signify action
+- Styled error messages with smaller font size and light red color (#e63946)
+- Updated completed todo text color to suggested gray (#6c757d)
+- Enhanced global background color to subtle gray (#f7f7f7) for better visual hierarchy
+- Updated delete button color to specified red (#dc3545) for consistency
+- Improved hover effects and transitions throughout the application
+
+### Technical Improvements
+- Enhanced accessibility with larger interactive elements and maintained ARIA labels
+- Improved visual design consistency with modern color palette and spacing
+- Better user experience with more intuitive visual indicators and feedback
+
 ## [v1.3.0] - 2025-09-13
 
 ### Added
@@ -90,4 +112,6 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 [v1.1.0]: https://github.com/Nadiia-Kovalova-Pro/next-app/compare/v1.0.0...v1.1.0
 [v1.2.0]: https://github.com/Nadiia-Kovalova-Pro/next-app/compare/v1.1.0...v1.2.0
+[v1.3.0]: https://github.com/Nadiia-Kovalova-Pro/next-app/compare/v1.2.0...v1.3.0
+[v1.4.0]: https://github.com/Nadiia-Kovalova-Pro/next-app/compare/v1.3.0...v1.4.0
 [v1.0.0]: https://github.com/Nadiia-Kovalova-Pro/next-app/releases/tag/v1.0.0

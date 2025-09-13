@@ -30,7 +30,7 @@ function TodoItem({ todo, onToggle, onDelete }: TodoItemProps) {
         onClick={() => onDelete(todo.id)}
         aria-label={`Delete "${todo.text}"`}
       >
-        Delete
+        🗑️
       </Button>
     </li>
   );

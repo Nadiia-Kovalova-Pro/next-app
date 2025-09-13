@@ -11,7 +11,7 @@ export default function Home() {
   return (
     <main className={styles.container} role="main">
       <div className={styles.card}>
-        <h1 className={styles.title}>Todo App</h1>
+        <h1 className={styles.title}>✅ Todo App</h1>
         <TodoForm onAdd={addTodo} errorMessage={errorMessage} />
         {/* List of todos */}
         <ul className={styles.list} aria-label="List of todo items">
