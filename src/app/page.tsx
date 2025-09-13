@@ -11,11 +11,15 @@ interface Todo {
 export default function Home() {
   const [todos, setTodos] = useState<Todo[]>([]);
   const [input, setInput] = useState('');
+  const [error, setError] = useState('');
 
   const addTodo = () => {
-    if (input.trim()) {
+    if (input.trim() && !todos.some(todo => todo.text === input.trim())) {
       setTodos([...todos, { id: Date.now(), text: input, completed: false }]);
       setInput('');
+      setError('');
+    } else if (todos.some(todo => todo.text === input.trim())) {
+      setError('Todo already exists!');
     }
   };
 
@@ -47,6 +51,7 @@ export default function Home() {
             Add
           </button>
         </div>
+        {error && <p className="text-red-500 mb-4">{error}</p>}
         <ul className="space-y-2">
           {todos.map(todo => (
             <li key={todo.id} className="flex items-center justify-between p-2 bg-gray-50 rounded-md">
