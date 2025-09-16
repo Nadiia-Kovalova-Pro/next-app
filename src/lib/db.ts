@@ -1,13 +1,21 @@
-import { PrismaClient } from '@prisma/client'
+import mongoose from 'mongoose'
 
-const globalForPrisma = globalThis as unknown as {
-  prisma: PrismaClient | undefined
+const uri = process.env.MONGODB_URI || 'mongodb://localhost:27017/next-app'
+
+export const connectDB = async () => {
+  if (mongoose.connection.readyState >= 1) {
+    return
+  }
+
+  try {
+    await mongoose.connect(uri)
+    console.log('Connected to MongoDB')
+  } catch (error) {
+    console.error('MongoDB connection error:', error)
+    throw error
+  }
 }
 
-export const prisma =
-  globalForPrisma.prisma ??
-  new PrismaClient({
-    log: ['query'],
-  })
-
-if (process.env.NODE_ENV !== 'production') globalForPrisma.prisma = prisma
+if (process.env.NODE_ENV !== 'production') {
+  mongoose.set('debug', true)
+}

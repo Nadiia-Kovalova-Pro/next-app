@@ -1,5 +1,6 @@
 import { NextRequest, NextResponse } from 'next/server'
-import { prisma } from '@/lib/db'
+import { connectDB } from '@/lib/db'
+import Todo from '@/lib/models/Todo'
 import { UpdateTodoInput } from '@/types/todo'
 
 interface RouteParams {
@@ -9,12 +10,8 @@ interface RouteParams {
 // GET /api/todos/[id] - Get a specific todo
 export async function GET(request: NextRequest, { params }: RouteParams) {
   try {
-    const todo = await prisma.todo.findUnique({
-      where: { id: params.id },
-      include: {
-        category: true,
-      },
-    })
+    await connectDB()
+    const todo = await Todo.findById(params.id).populate('category')
 
     if (!todo) {
       return NextResponse.json(
@@ -36,30 +33,27 @@ export async function GET(request: NextRequest, { params }: RouteParams) {
 // PUT /api/todos/[id] - Update a specific todo
 export async function PUT(request: NextRequest, { params }: RouteParams) {
   try {
+    await connectDB()
     const body: UpdateTodoInput = await request.json()
 
-    const todo = await prisma.todo.update({
-      where: { id: params.id },
-      data: {
-        ...(body.title !== undefined && { title: body.title }),
-        ...(body.description !== undefined && { description: body.description }),
-        ...(body.completed !== undefined && { completed: body.completed }),
-        ...(body.categoryId !== undefined && { categoryId: body.categoryId }),
-      },
-      include: {
-        category: true,
-      },
-    })
+    const updateData: Partial<UpdateTodoInput> = {}
+    if (body.title !== undefined) updateData.title = body.title
+    if (body.description !== undefined) updateData.description = body.description
+    if (body.completed !== undefined) updateData.completed = body.completed
+    if (body.categoryId !== undefined) updateData.categoryId = body.categoryId
 
-    return NextResponse.json(todo)
-  } catch (error) {
-    console.error('Error updating todo:', error)
-    if (error && typeof error === 'object' && 'code' in error && error.code === 'P2025') {
+    const todo = await Todo.findByIdAndUpdate(params.id, updateData, { new: true }).populate('category')
+
+    if (!todo) {
       return NextResponse.json(
         { error: 'Todo not found' },
         { status: 404 }
       )
     }
+
+    return NextResponse.json(todo)
+  } catch (error) {
+    console.error('Error updating todo:', error)
     return NextResponse.json(
       { error: 'Failed to update todo' },
       { status: 500 }
@@ -70,19 +64,19 @@ export async function PUT(request: NextRequest, { params }: RouteParams) {
 // DELETE /api/todos/[id] - Delete a specific todo
 export async function DELETE(request: NextRequest, { params }: RouteParams) {
   try {
-    await prisma.todo.delete({
-      where: { id: params.id },
-    })
+    await connectDB()
+    const todo = await Todo.findByIdAndDelete(params.id)
 
-    return NextResponse.json({ message: 'Todo deleted successfully' })
-  } catch (error) {
-    console.error('Error deleting todo:', error)
-    if (error && typeof error === 'object' && 'code' in error && error.code === 'P2025') {
+    if (!todo) {
       return NextResponse.json(
         { error: 'Todo not found' },
         { status: 404 }
       )
     }
+
+    return NextResponse.json({ message: 'Todo deleted successfully' })
+  } catch (error) {
+    console.error('Error deleting todo:', error)
     return NextResponse.json(
       { error: 'Failed to delete todo' },
       { status: 500 }

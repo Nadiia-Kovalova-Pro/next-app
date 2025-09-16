@@ -1,13 +1,15 @@
 import { render, screen, fireEvent } from '@testing-library/react';
 import ProfileForm from './ProfileForm';
 import { UserProfile } from '../types/profile';
+import { useProfileForm } from '../hooks/useProfileForm';
+import { useUpdateProfile } from '../hooks/useProfile';
 
 // Mock the hooks
 jest.mock('../hooks/useProfileForm');
 jest.mock('../hooks/useProfile');
 
-const mockUseProfileForm = require('../hooks/useProfileForm').useProfileForm;
-const mockUseUpdateProfile = require('../hooks/useProfile').useUpdateProfile;
+const mockUseProfileForm = useProfileForm as jest.MockedFunction<typeof useProfileForm>;
+const mockUseUpdateProfile = useUpdateProfile as jest.MockedFunction<typeof useUpdateProfile>;
 
 describe('ProfileForm', () => {
   const mockProfile: UserProfile = {
