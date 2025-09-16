@@ -7,6 +7,34 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+### Added
+- Integrated UI components with database layer for real-time data persistence
+- Updated Todo type definitions to match database schema (UUID, title, description, timestamps)
+- Created REST API endpoints for todo CRUD operations (`/api/todos`, `/api/todos/[id]`)
+- Refactored `useTodos` hook to use React Query for server state management
+- Updated `TodoItem` component to display title, description, and category information
+- Enhanced `TodoForm` component with description field support
+- Implemented optimistic updates and error handling for database operations
+- Added loading states and disabled states for better user experience during API calls
+
+### Changed
+- Migrated from local state management to server-state management with React Query
+- Updated component interfaces to use string IDs instead of numeric IDs
+- Enhanced error handling with specific error messages for different failure scenarios
+- Improved TypeScript types to include database relationships and optional fields
+
+## [v1.6.0] - 2025-09-16
+
+### Added
+- Introduced database layer using Prisma ORM with SQLite for development
+- Created comprehensive data structures documentation (`datastructure.md`) defining User, Profile, Todo, and Category models
+- Implemented Prisma schema with relationships: User ↔ Profile (1:1), User ↔ Todos/Categories (1:N), Category ↔ Todos (1:N)
+- Generated Prisma client for type-safe database operations
+- Created database configuration in `src/lib/db.ts` with proper connection handling
+- Added database seeding script (`prisma/seed.ts`) with sample user, profile, categories, and todos
+- Added npm scripts for database management: `db:seed`, `db:studio`, `db:migrate`
+- Installed Prisma dependencies: `@prisma/client`, `prisma`, `tsx` for TypeScript execution
+
 ## [v1.5.1] - 2025-09-16
 
 ### Added

@@ -3,18 +3,21 @@ import styles from '../styles/TodoApp.module.css';
 import Button from './Button';
 
 interface TodoFormProps {
-  onAdd: (text: string) => boolean;
+  onAdd: (title: string, description?: string) => Promise<boolean>;
   errorMessage?: string;
+  isLoading?: boolean;
 }
 
-export default function TodoForm({ onAdd, errorMessage }: TodoFormProps) {
-  const [newTodoText, setNewTodoText] = useState('');
+export default function TodoForm({ onAdd, errorMessage, isLoading }: TodoFormProps) {
+  const [title, setTitle] = useState('');
+  const [description, setDescription] = useState('');
 
-  const handleSubmit = (e: FormEvent) => {
+  const handleSubmit = async (e: FormEvent) => {
     e.preventDefault();
-    const success = onAdd(newTodoText);
+    const success = await onAdd(title, description);
     if (success) {
-      setNewTodoText('');
+      setTitle('');
+      setDescription('');
     }
   };
 
@@ -22,16 +25,29 @@ export default function TodoForm({ onAdd, errorMessage }: TodoFormProps) {
     <form onSubmit={handleSubmit}>
       {/* Input section for adding new todos */}
       <div className={styles.form}>
-        <input
-          type="text"
-          value={newTodoText}
-          onChange={(e) => setNewTodoText(e.target.value)}
-          placeholder="Add a new task..."
-          className={styles.input}
-          aria-label="New todo input"
-        />
-        <Button type="submit" variant="success">
-          Add
+        <div className={styles.inputGroup}>
+          <input
+            type="text"
+            value={title}
+            onChange={(e) => setTitle(e.target.value)}
+            placeholder="Add a new task..."
+            className={styles.input}
+            disabled={isLoading}
+            aria-label="New todo title"
+            required
+          />
+          <input
+            type="text"
+            value={description}
+            onChange={(e) => setDescription(e.target.value)}
+            placeholder="Description (optional)..."
+            className={styles.input}
+            disabled={isLoading}
+            aria-label="New todo description"
+          />
+        </div>
+        <Button type="submit" variant="success" disabled={isLoading}>
+          {isLoading ? 'Adding...' : 'Add'}
         </Button>
       </div>
       {/* Error message display */}
