@@ -7,8 +7,43 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+## [v1.5.1] - 2025-09-16
+
+### Added
+- Added `engineeringpractices.md` documenting engineering practices, coding conventions, and project guidelines
+- Added `userflows.md` describing key user flows and interactions in the Todo App
+
+## [v1.5.0] - 2025-09-16
+
 ### Added
 - Added Git churn analyzer script (`analyze-churn.sh`) and documentation (`ANALYZE-CHURN-README.md`) for analyzing repository file change frequency using Git history
+- New `/profile` page with user profile management functionality
+- `ProfileForm` component for editing user profile information with form validation
+- Custom `useProfile` hook for fetching user profile data using React Query
+- Custom `useProfileForm` hook for managing form state and validation
+- API utility functions in `src/lib/api.ts` for user profile operations
+- TypeScript interfaces in `src/types/profile.ts` for type-safe profile management
+- CSS Modules styling for profile components (`ProfileForm.module.css`, `Profile.module.css`)
+- Jest and React Testing Library setup for unit testing
+- Basic unit tests for `ProfileForm` component
+- Navigation link for profile page in the main navigation
+- `QueryProvider` component for React Query client management
+- Comprehensive test configuration with Jest setup and mocking
+
+### Changed
+- Updated navigation routes to include profile page
+- Enhanced layout with React Query provider for data caching
+- Improved CSS Modules implementation with proper local class selectors
+- Added "use client" directives to components using React hooks
+
+### Technical Improvements
+- Implemented proper Client Component architecture for Next.js 13+ App Router
+- Added comprehensive testing infrastructure with Jest and React Testing Library
+- Enhanced type safety with dedicated TypeScript interfaces for profile data
+- Improved error handling and user feedback in profile management
+- Added API integration layer with Axios and React Query for efficient data fetching
+- Fixed CSS Modules compilation errors with pure selectors
+- Resolved React hooks usage in Server Components by adding proper client directives
 
 ## [v1.4.0] - 2025-09-13
 
@@ -117,4 +152,6 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 [v1.2.0]: https://github.com/Nadiia-Kovalova-Pro/next-app/compare/v1.1.0...v1.2.0
 [v1.3.0]: https://github.com/Nadiia-Kovalova-Pro/next-app/compare/v1.2.0...v1.3.0
 [v1.4.0]: https://github.com/Nadiia-Kovalova-Pro/next-app/compare/v1.3.0...v1.4.0
+[v1.5.0]: https://github.com/Nadiia-Kovalova-Pro/next-app/compare/v1.4.0...v1.5.0
+[v1.5.1]: https://github.com/Nadiia-Kovalova-Pro/next-app/compare/v1.5.0...v1.5.1
 [v1.0.0]: https://github.com/Nadiia-Kovalova-Pro/next-app/releases/tag/v1.0.0
