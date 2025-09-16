@@ -14,5 +14,10 @@ export const routes: Route[] = [
     href: '/about',
     label: 'About',
     description: 'Learn more about the Todo App'
+  },
+  {
+    href: '/profile',
+    label: 'Profile',
+    description: 'User profile management'
   }
 ];
