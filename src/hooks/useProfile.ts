@@ -1,6 +1,6 @@
 import { useQuery, useMutation, useQueryClient } from '@tanstack/react-query';
 import { fetchUserProfile, updateUserProfile } from '../lib/api';
-import { UserProfile, UpdateProfileRequest } from '../types/profile';
+import { UpdateProfileRequest } from '../types/profile';
 
 export function useProfile(userId: string) {
   return useQuery({

@@ -5,11 +5,18 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
-## [Unreleased]
+## [v1.7.0] - 2025-09-17
 
 ### Added
-- Integrated UI components with database layer for real-time data persistence
-- Updated Todo type definitions to match database schema (UUID, title, description, timestamps)
+- **MongoDB Migration**: Complete migration from Prisma ORM with SQLite to MongoDB with Mongoose ODM
+- Created Mongoose models for User, Profile, Todo, and Category with proper schema definitions
+- Implemented MongoDB connection configuration in `src/lib/db.ts` with environment variable support
+- Added database seeding script (`src/lib/seed.ts`) with sample data for development
+- Created centralized API functions in `src/lib/api.ts` for todo CRUD operations
+- Added data transformation utilities in `src/lib/utils.ts` for MongoDB document to API response conversion
+- Implemented virtual populate for Todo-Category relationships in Mongoose schemas
+- Integrated UI components with MongoDB database layer for real-time data persistence
+- Updated Todo type definitions to match MongoDB schema (ObjectId, title, description, timestamps)
 - Created REST API endpoints for todo CRUD operations (`/api/todos`, `/api/todos/[id]`)
 - Refactored `useTodos` hook to use React Query for server state management
 - Updated `TodoItem` component to display title, description, and category information
@@ -18,10 +25,27 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - Added loading states and disabled states for better user experience during API calls
 
 ### Changed
+- **Database Backend**: Replaced Prisma/SQLite with MongoDB/Mongoose for improved scalability and flexibility
+- **API Routes**: Updated all API routes (`/api/todos`, `/api/todos/[id]`, `/api/users/[id]`) to work with MongoDB
+- **Data Types**: Migrated from Prisma-generated types to custom TypeScript interfaces matching MongoDB schema
+- **Route Handlers**: Updated to Next.js 15 compatibility with async `params` handling
+- **Error Handling**: Enhanced error handling for MongoDB operations and connection issues
+- **Dependencies**: Added `mongoose` and `mongodb` packages, removed Prisma-related dependencies
 - Migrated from local state management to server-state management with React Query
-- Updated component interfaces to use string IDs instead of numeric IDs
+- Updated component interfaces to use string IDs instead of ObjectIds
 - Enhanced error handling with specific error messages for different failure scenarios
 - Improved TypeScript types to include database relationships and optional fields
+
+### Fixed
+- Resolved Next.js 15 route parameter compatibility issues with Promise-based params
+- Fixed Mongoose populate errors by ensuring proper model registration order
+- Corrected data transformation from MongoDB `_id` to API `id` fields
+- Fixed TypeScript compilation errors related to route handler interfaces
+
+### Removed
+- Removed Prisma ORM and SQLite dependencies (`@prisma/client`, `prisma`)
+- Removed Prisma schema file (`prisma/schema.prisma`) and migration files
+- Removed Prisma-related npm scripts (`db:seed`, `db:studio`, `db:migrate`)
 
 ## [v1.6.0] - 2025-09-16
 

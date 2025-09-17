@@ -18,15 +18,16 @@ export default function About() {
           <li className={styles.featureItem}>Add new todos with ease</li>
           <li className={styles.featureItem}>Mark todos as completed with a single click</li>
           <li className={styles.featureItem}>Delete todos you no longer need</li>
-          <li className={styles.featureItem}>Persistent storage using local storage</li>
+          <li className={styles.featureItem}>Persistent storage using MongoDB</li>
+          <li className={styles.featureItem}>User profiles and categories</li>
           <li className={styles.featureItem}>Responsive design for all devices</li>
         </ul>
         <h2 className={styles.sectionTitle}>How to Use</h2>
         <p className={styles.usageText}>
-          Simply type your task in the input field and click "Add Todo". Click on a todo item to toggle its completion status, or use the delete button to remove it. Your todos are automatically saved and will persist between sessions.
+          Simply type your task in the input field and click &quot;Add Todo&quot;. Click on a todo item to toggle its completion status, or use the delete button to remove it. Your todos are automatically saved to MongoDB and will persist between sessions.
         </p>
         <p className={styles.usageText}>
-          This app helps you stay organized and productive by keeping track of your daily tasks in a clean, intuitive interface.
+          You can also organize your todos into categories and manage your user profile. This app helps you stay organized and productive by keeping track of your daily tasks in a clean, intuitive interface with persistent cloud storage.
         </p>
       </div>
     </main>

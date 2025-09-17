@@ -6,7 +6,7 @@ import ProfileForm from '../../components/ProfileForm';
 import styles from './Profile.module.css';
 
 export default function ProfilePage() {
-  const userId = '1'; // Replace with actual user ID from auth or params
+  const userId = '68c9926b1eefce26b6400968'; // MongoDB ObjectId from seeded data
   const { data: profile, isLoading, error } = useProfile(userId);
 
   if (isLoading) return <p>Loading profile...</p>;

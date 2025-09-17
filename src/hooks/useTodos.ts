@@ -1,6 +1,6 @@
 import { useMutation, useQuery, useQueryClient } from '@tanstack/react-query'
-import { Todo, CreateTodoInput, UpdateTodoInput } from '../types/todo'
-import axios from 'axios'
+import { UpdateTodoInput } from '../types/todo'
+import { getTodos, createTodo, updateTodo, deleteTodoApi } from '../lib/api'
 
 export function useTodos() {
   const queryClient = useQueryClient()
@@ -12,18 +12,12 @@ export function useTodos() {
     error: fetchError,
   } = useQuery({
     queryKey: ['todos'],
-    queryFn: async (): Promise<Todo[]> => {
-      const response = await axios.get('/api/todos')
-      return response.data
-    },
+    queryFn: getTodos,
   })
 
   // Add todo mutation
   const addTodoMutation = useMutation({
-    mutationFn: async (input: CreateTodoInput): Promise<Todo> => {
-      const response = await axios.post('/api/todos', input)
-      return response.data
-    },
+    mutationFn: createTodo,
     onSuccess: () => {
       queryClient.invalidateQueries({ queryKey: ['todos'] })
     },
@@ -31,10 +25,7 @@ export function useTodos() {
 
   // Update todo mutation
   const updateTodoMutation = useMutation({
-    mutationFn: async ({ id, input }: { id: string; input: UpdateTodoInput }): Promise<Todo> => {
-      const response = await axios.put(`/api/todos/${id}`, input)
-      return response.data
-    },
+    mutationFn: ({ id, input }: { id: string; input: UpdateTodoInput }) => updateTodo(id, input),
     onSuccess: () => {
       queryClient.invalidateQueries({ queryKey: ['todos'] })
     },
@@ -42,9 +33,7 @@ export function useTodos() {
 
   // Delete todo mutation
   const deleteTodoMutation = useMutation({
-    mutationFn: async (id: string): Promise<void> => {
-      await axios.delete(`/api/todos/${id}`)
-    },
+    mutationFn: deleteTodoApi,
     onSuccess: () => {
       queryClient.invalidateQueries({ queryKey: ['todos'] })
     },

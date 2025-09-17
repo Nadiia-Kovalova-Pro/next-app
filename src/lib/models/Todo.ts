@@ -22,4 +22,16 @@ const TodoSchema: Schema = new Schema({
   collection: 'todos'
 })
 
+// Add virtual populate for category
+TodoSchema.virtual('category', {
+  ref: 'Category',
+  localField: 'categoryId',
+  foreignField: '_id',
+  justOne: true
+})
+
+// Ensure virtual fields are serialized
+TodoSchema.set('toObject', { virtuals: true })
+TodoSchema.set('toJSON', { virtuals: true })
+
 export default mongoose.models.Todo || mongoose.model<ITodo>('Todo', TodoSchema)
