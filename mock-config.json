@@ -1,0 +1,69 @@
+{
+  "systemName": "Mock Solar System",
+  "planets": [
+    {
+      "id": 1,
+      "name": "Mars-1",
+      "type": "Ice Giant",
+      "size": 67310,
+      "distance": 669996297,
+      "moons": 6
+    },
+    {
+      "id": 2,
+      "name": "Neptune-2",
+      "type": "Terrestrial",
+      "size": 87956,
+      "distance": 23975417,
+      "moons": 7
+    },
+    {
+      "id": 3,
+      "name": "Pluto-3",
+      "type": "Gas Giant",
+      "size": 71792,
+      "distance": 478457601,
+      "moons": 5
+    },
+    {
+      "id": 4,
+      "name": "Mars-4",
+      "type": "Dwarf",
+      "size": 34237,
+      "distance": 408051318,
+      "moons": 1
+    },
+    {
+      "id": 5,
+      "name": "Venus-5",
+      "type": "Terrestrial",
+      "size": 52175,
+      "distance": 610062459,
+      "moons": 8
+    },
+    {
+      "id": 6,
+      "name": "Saturn-6",
+      "type": "Dwarf",
+      "size": 56797,
+      "distance": 887346177,
+      "moons": 1
+    },
+    {
+      "id": 7,
+      "name": "Jupiter-7",
+      "type": "Terrestrial",
+      "size": 57549,
+      "distance": 33843413,
+      "moons": 5
+    },
+    {
+      "id": 8,
+      "name": "Saturn-8",
+      "type": "Ice Giant",
+      "size": 95147,
+      "distance": 362005330,
+      "moons": 8
+    }
+  ]
+}
