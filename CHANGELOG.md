@@ -5,6 +5,14 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [v1.8.0] - 2025-09-17
+
+### Added
+- **Data Scraper Script**: Added `src/lib/scraper.ts` to fetch and parse asteroid close approach data from NASA's public API
+- Implemented automated data fetching from NASA's Close Approach Data API (https://ssd-api.jpl.nasa.gov/cad.api)
+- Added structured data output in both JSON and CSV formats for asteroid monitoring and analysis
+- Created reusable scraper utility with error handling and console logging for data processing status
+
 ## [v1.7.0] - 2025-09-17
 
 ### Added
